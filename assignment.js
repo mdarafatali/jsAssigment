@@ -22,6 +22,7 @@ console.log(lengthConverter);
 
 
 
+
 // budgetCalculator
 
 var ghoriPrice = 50;
@@ -69,17 +70,17 @@ function hotelCost(countDays){
     }
 
     else if (countDays <= 20 && countDays > 10 ){   //11 to 20 days condition
-        var totalPkg2Cost =  package11To20 * countDays;
+        var totalPkg2Cost =  (package11To20 * (countDays-10)) + (package1To10 * 10);
         return totalPkg2Cost;
     }
 
     else if (countDays >= 21){   //equal or more than 21 days condition
-        var totalPkg3Cost = package21ToMore * countDays;
+        var totalPkg3Cost = (package21ToMore * (countDays-20)) + (package1To10 * 10) + (package11To20*10);
         return totalPkg3Cost;
     }
 }
 
-var totalHotelCost = hotelCost(11);   //call hotelCost function
+var totalHotelCost = hotelCost(21);   //call hotelCost function
 console.log(totalHotelCost);
 
 
@@ -95,10 +96,9 @@ function megaFriend(friendList){
     var largestName = [0];
     for (var i = 0; i < friendList.length; i++){ 
         var result = friendList[i];
-
-    if (result.length > largestName.length){ //largest Name condition
+        
+        if (result.length > largestName.length){ //largest Name condition
             largestName = result;
-            
         }
     }
     return largestName;     //return largest Number
